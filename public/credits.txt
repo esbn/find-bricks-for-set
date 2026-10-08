@@ -1,0 +1,9 @@
+Find bricks for a set
+
+See PROVENANCE.md in the repository for the full provenance and licence notes.
+First-party vision and CAD code adapted from brick-finder.
+LDraw parts: LDraw.org; licences in public/ldraw/CAlicense*.txt.
+MobileSAM: Apache-2.0. LEGO detector checkpoints: Brickssifier_Studwise
+(Apache-2.0 notice). Ultralytics inference: AGPL-3.0. Setup retains notices.
+Set inventories and colours: Rebrickable public CSV downloads.
+Model weights, set data and the LDraw library are not committed to this repo.

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Find bricks for a set</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/"
+        ><span class="brick-mark" aria-hidden="true">▦</span> Set Finder</a
+      ><span class="local-pill">● Local vision · private photos</span>
+    </header>
+    <main>
+      <div class="intro">
+        <div>
+          <p class="eyebrow">FROM THE PILE TO THE BUILD</p>
+          <h1>Your bricks. This build.</h1>
+          <p>
+            Choose a LEGO set. Photograph your pieces. Find the ones you need.
+          </p>
+        </div>
+        <button id="demo" class="subtle">
+          Try a synthetic workshop demo ↗
+        </button>
+      </div>
+      <div class="workspace">
+        <aside>
+          <section class="panel">
+            <div class="section-heading">
+              <span class="step">1</span>
+              <h2>Choose your set</h2>
+            </div>
+            <label for="setQuery">Set number or name</label>
+            <form id="setSearch">
+              <div class="search-row">
+                <input
+                  id="setQuery"
+                  autocomplete="off"
+                  placeholder="e.g. 11013 or Creative Bricks"
+                /><button id="searchSets" type="submit">Search</button>
+              </div>
+            </form>
+            <div id="setResults" class="set-results"></div>
+            <p id="setStatus" class="muted" role="status">
+              Loading local catalogue…
+            </p>
+            <div id="selectedSet" hidden></div>
+            <details>
+              <summary>Use a custom parts list</summary>
+              <p class="muted">
+                Import a JSON list with part IDs, colours and quantities. See
+                README for the format.
+              </p>
+              <label class="upload-mini"
+                >Import inventory JSON<input
+                  id="inventoryFile"
+                  type="file"
+                  accept="application/json,.json"
+              /></label>
+            </details>
+          </section>
+          <section class="panel inventory-panel">
+            <div class="section-heading">
+              <h2>What this build needs</h2>
+              <span id="requiredCount" class="small-badge">—</span>
+            </div>
+            <p id="coverageSummary" class="muted">
+              Select a set to see its parts.
+            </p>
+            <input
+              id="partFilter"
+              aria-label="Filter required parts"
+              placeholder="Filter parts or colours…"
+            />
+            <div id="requirements" class="requirements"></div>
+            <button id="clearFilter" class="subtle" hidden>
+              Show all highlighted parts
+            </button>
+          </section>
+        </aside>
+        <div class="main-column">
+          <section class="panel photo-panel">
+            <div class="photo-toolbar">
+              <div class="section-heading">
+                <span class="step">2</span>
+                <h2>Find pieces in your photo</h2>
+              </div>
+              <label class="upload-mini"
+                >Upload photo<input id="imageFile" type="file" accept="image/*"
+              /></label>
+            </div>
+            <div
+              id="pipelineStages"
+              class="pipeline-stages"
+              role="group"
+              aria-label="Detection pipeline stage"
+            ></div>
+            <p
+              id="pipelineSummary"
+              class="muted pipeline-summary"
+              role="status"
+            >
+              Upload a photo to inspect pipeline stages.
+            </p>
+            <div id="photoArea" class="photo-area">
+              <div id="photoEmpty">
+                <div class="empty-bricks" aria-hidden="true">
+                  <i></i><i></i><i></i>
+                </div>
+                <h3>A little space between pieces helps.</h3>
+                <p>
+                  Drop a photo here, or upload one above.<br />Bright, even
+                  light makes colours easier to compare.
+                </p>
+              </div>
+              <canvas
+                id="photoCanvas"
+                hidden
+                aria-label="Photograph with quantity-aware brick highlights"
+                tabindex="0"
+              ></canvas>
+            </div>
+            <div id="photoLegend" class="legend">
+              <span><i class="dot confirmed"></i>Confirmed</span
+              ><span><i class="dot likely"></i>Likely needed</span
+              ><span><i class="dot uncertain"></i>Needs review</span
+              ><label
+                ><input id="showAll" type="checkbox" checked /> Show unassigned
+                pieces</label
+              >
+            </div>
+            <div class="identify-row">
+              <button id="identify" class="primary" disabled>
+                Highlight bricks for this set →</button
+              ><button id="stop" class="subtle" hidden>Stop</button>
+            </div>
+            <p id="status" role="status">
+              Choose a set and add a photo to begin.
+            </p>
+            <progress id="progress" hidden></progress>
+            <details class="settings">
+              <summary>Photo and matching settings</summary>
+              <label for="method">Segmentation</label
+              ><select id="method">
+                <option value="threshold">Background threshold · fast</option>
+                <option value="sam">Local SAM</option>
+                <option value="yolo">YOLO + SAM · source-resolution tiles</option>
+              </select>
+              <p id="modelStatus" class="muted"></p>
+              <label class="check"
+                ><input id="matchColours" type="checkbox" checked /> Match the
+                set's colours (estimated)</label
+              ><label for="density">Detection detail</label
+              ><select id="density">
+                <option value="16">Standard</option>
+                <option value="32">Detailed · slower</option>
+              </select>
+              <p class="muted">
+                Only mapped parts in this set are compared. A closest match is
+                not proof: inspect before picking.
+              </p>
+            </details>
+          </section>
+          <section id="review" class="panel review-panel" hidden>
+            <div class="section-heading">
+              <span class="step">3</span>
+              <h2>Review matches</h2>
+              <span id="reviewState" class="small-badge"></span>
+            </div>
+            <div class="review-layout">
+              <nav
+                id="regions"
+                class="region-list"
+                aria-label="Detected photo regions"
+              ></nav>
+              <div class="review-body">
+                <h3 id="reviewTitle"></h3>
+                <div class="review-pair">
+                  <figure>
+                    <figcaption>Photo crop</figcaption>
+                    <canvas id="cropCanvas" width="320" height="250"></canvas>
+                  </figure>
+                  <figure>
+                    <figcaption>CAD · drag to rotate</figcaption>
+                    <canvas
+                      id="cadCanvas"
+                      class="rotatable"
+                      width="320"
+                      height="250"
+                      tabindex="0"
+                      aria-label="Rotatable matched CAD model"
+                    ></canvas
+                    ><button id="resetView" class="subtle small">
+                      Reset to matched view
+                    </button>
+                  </figure>
+                </div>
+                <p id="surfaceEvidence" class="muted"></p>
+                <div class="candidate-carousel">
+                  <button
+                    id="previousCandidate"
+                    aria-label="Previous set candidate"
+                  >
+                    ‹
+                  </button>
+                  <p id="candidateLabel"></p>
+                  <button id="nextCandidate" aria-label="Next set candidate">
+                    ›
+                  </button>
+                </div>
+                <details id="corrections">
+                  <summary>Change required part or viewing side</summary>
+                  <label for="manualPart">Assign to inventory line</label
+                  ><select id="manualPart"></select
+                  ><label for="face">CAD viewing side</label
+                  ><select id="face">
+                    <option value="top">Top / studs</option>
+                    <option value="bottom">Underside / tubes</option>
+                  </select>
+                </details>
+                <p id="reviewNote" class="muted"></p>
+                <div class="review-actions">
+                  <button id="confirm" class="primary">
+                    Confirm for this set</button
+                  ><button id="reject" class="subtle">
+                    Not needed / exclude
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="report-row">
+            <p id="photoSummary" class="muted">
+              Photo-space highlights, not live camera tracking. Suggestions
+              require review.
+            </p>
+            <button id="export" class="subtle" disabled>
+              Download review report
+            </button>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <span>Photos and models stay on your computer. No cloud AI.</span
+        ><a href="credits.txt" id="credits">Sources and licences</a>
+      </footer>
+    </main>
+    <script type="module" src="app.mjs"></script>
+  </body>
+</html>

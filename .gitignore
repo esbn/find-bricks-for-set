@@ -1,0 +1,13 @@
+node_modules/
+.venv-sam/
+.cache/
+__pycache__/
+public/ldraw/
+public/search-index/
+public/library.json
+public/.ldraw-install-*/
+artifacts/
+.env
+.env.*
+.DS_Store
+test-results/

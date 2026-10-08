@@ -1,0 +1,9 @@
+# Intel macOS wheels; isolated from the app's Node dependencies.
+numpy==1.26.4
+torch==2.2.2
+torchvision==0.17.2
+timm==0.9.12
+Pillow==10.4.0
+opencv-python-headless==4.8.1.78
+mobile-sam @ git+https://github.com/ChaoningZhang/MobileSAM.git@f706ad9c4eb7f219c00d9050e46328518ffb65d2
+

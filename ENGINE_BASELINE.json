@@ -1,0 +1,156 @@
+{
+  "source": "Local brick-finder snapshot, 2026-10-06",
+  "files": [
+    {
+      "source": "dist/cad.mjs",
+      "target": "public/engine/cad.mjs",
+      "sha256": "9ddd954d988cd39561bcc5310739ea3617370387945476717b37dbc42df15d71"
+    },
+    {
+      "source": "dist/matching.mjs",
+      "target": "public/engine/matching.mjs",
+      "sha256": "b205b6669fa3475346f4452edacf00a657ea7ebe94ccc9a77abb63de5fe32c4a"
+    },
+    {
+      "source": "dist/core.mjs",
+      "target": "public/engine/core.mjs",
+      "sha256": "2851a129e81c509dd6f41d8ccd03d7c66e4b6d9789716c84a911265c2fa3c099"
+    },
+    {
+      "source": "dist/hnsw.mjs",
+      "target": "public/engine/hnsw.mjs",
+      "sha256": "0150723b409cb6a581c9c7aef6c99fe70b41fa844882204eab52c737499179d3"
+    },
+    {
+      "source": "dist/view-index.mjs",
+      "target": "public/engine/view-index.mjs",
+      "sha256": "5c203e598a51e34d307ad400acebe8d5e09a04f8bbc5be5e6cb71fe28a395a29"
+    },
+    {
+      "source": "dist/surface-features.mjs",
+      "target": "public/engine/surface-features.mjs",
+      "sha256": "ec3bb05cd41f9373e1df04efbc10b6c2436d6e119fa0407d88c0adb6f9b2a6bb"
+    },
+    {
+      "source": "dist/part-families.mjs",
+      "target": "public/engine/part-families.mjs",
+      "sha256": "77b590477a5ece6fd3fb8f9fe9517049d4a0a95ea6bace774d364da6e555e15f"
+    },
+    {
+      "source": "dist/part-library.mjs",
+      "target": "public/engine/part-library.mjs",
+      "sha256": "19ac25a64d81fc3e0168cb1e007cb1972621040e8ce8816dd2516f01da72d29a"
+    },
+    {
+      "source": "dist/prevalence.mjs",
+      "target": "public/engine/prevalence.mjs",
+      "sha256": "418d32277e864e7d3fa6563f6300cc1daf9641cc795ed680cbc60c5f3a315295"
+    },
+    {
+      "source": "dist/review.mjs",
+      "target": "public/engine/review.mjs",
+      "sha256": "8b2ff8993a86612055409b279c51165c24e0233478f30d2c5c8cb82a42be8b32"
+    },
+    {
+      "source": "dist/segmentation-client.mjs",
+      "target": "public/engine/segmentation-client.mjs",
+      "sha256": "caa906d191fd5dede02008029a6b4a086500ac61e3aaa7621bc87c198336db9d"
+    },
+    {
+      "source": "dist/catalogue.mjs",
+      "target": "public/engine/catalogue.mjs",
+      "sha256": "dc3cf9ae35d10f3bb0936300940e50e7ea0247a61b35b886f006b876db9592cb"
+    },
+    {
+      "source": "scripts/install-ldraw.mjs",
+      "target": "scripts/install-ldraw.mjs",
+      "sha256": "7dc3fb2f2273007e06354b8baa22687ce9331e202256d8f256d8cde0c4ce8c9d"
+    },
+    {
+      "source": "scripts/build-index.mjs",
+      "target": "scripts/build-index.mjs",
+      "sha256": "a0ac4ec05d3bccd085cca3b674ab08368eec1faa03858d47672fd9d681281005"
+    },
+    {
+      "source": "scripts/index-part-worker.mjs",
+      "target": "scripts/index-part-worker.mjs",
+      "sha256": "0ad79b09c990aca4a34172d1503d97880226352a6d472877bd9ffcf7a56effb3"
+    },
+    {
+      "source": "scripts/surface-catalogue.mjs",
+      "target": "scripts/surface-catalogue.mjs",
+      "sha256": "391aebeb8cfe4d9735c7e90db291e02068d5869473d47e92670316376d2545a1"
+    },
+    {
+      "source": "scripts/silhouette.mjs",
+      "target": "scripts/silhouette.mjs",
+      "sha256": "6ecafb5eb4d3513f2f0ee25126650871092358abe3b5a098a6a3c579f1e86102"
+    },
+    {
+      "source": "scripts/setup-sam.mjs",
+      "target": "scripts/setup-sam.mjs",
+      "sha256": "20ccf49186b8481b972699d161cba6befc8a158f3925a20a5c48eb315c357866"
+    },
+    {
+      "source": "scripts/setup-yolo.mjs",
+      "target": "scripts/setup-yolo.mjs",
+      "sha256": "86e6b3f048d2ee166426ebaa805fbba074a50982c34f378faf17137162d65d57"
+    },
+    {
+      "source": "scripts/sam-bridge.mjs",
+      "target": "scripts/sam-bridge.mjs",
+      "sha256": "7306e2b935c7c4e91d67275980f48f3c60b719c7ec2baffb714652d546c26a37"
+    },
+    {
+      "source": "scripts/sam-runner.py",
+      "target": "scripts/sam-runner.py",
+      "sha256": "b026ce2376272abb5a7eab57265050f4c5ff0109fe60879eccfecaacecd1e3c7"
+    },
+    {
+      "source": "scripts/yolo_detector.py",
+      "target": "scripts/yolo_detector.py",
+      "sha256": "c37c46d0677ac2facf34aa8a848556428d83d0b5eccde7298aee24d75b8d5c0d"
+    },
+    {
+      "source": "scripts/tube_detector.py",
+      "target": "scripts/tube_detector.py",
+      "sha256": "8aa4362ad8ec57f581ac182032d0f98951b6ba4bc4de931daf368a4a9061ccfd"
+    },
+    {
+      "source": "scripts/requirements-sam.txt",
+      "target": "scripts/requirements-sam.txt",
+      "sha256": "acb2c2e57d170fd6bbce1cb824ce4d974b90d36ac366773fff4c2b8c68c0fd6b"
+    },
+    {
+      "source": "scripts/requirements-yolo.txt",
+      "target": "scripts/requirements-yolo.txt",
+      "sha256": "bc67a1e98676c903907cb949043b376e6742b9ad2792ecccb801ed575c1c50ac"
+    },
+    {
+      "source": "scripts/prevalence.mjs",
+      "target": "scripts/prevalence.mjs",
+      "sha256": "36b7a7f062026a614a6edfa7d43aa75ad20c1e0caf877f45b0da3e82dea34889"
+    },
+    {
+      "source": "ldraw.lock.json",
+      "target": "ldraw.lock.json",
+      "sha256": "b336f17259e8d502ccea447a3c0a34fddfda1d2284fa74f83c0ccebe436462c9"
+    },
+    {
+      "source": "dist/CAreadme.txt",
+      "target": "public/CAreadme.txt",
+      "sha256": "c67a824bdab18e646337b5b26f7f039c84b0be71273c0c878e2749e648820497"
+    },
+    {
+      "source": "dist/CAlicense.txt",
+      "target": "public/CAlicense.txt",
+      "sha256": "487265d3a122b2e54e460954cd2eca34ac2e545bcb1b2ac23cbda2a27e49a6c2"
+    },
+    {
+      "source": "dist/CAlicense4.txt",
+      "target": "public/CAlicense4.txt",
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+    }
+  ],
+  "adaptations": "Offline scripts use public assets/engine modules; model installation accepts BRICK_MODEL_CACHE. No runtime sibling imports."
+}

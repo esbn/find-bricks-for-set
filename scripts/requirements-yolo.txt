@@ -1,0 +1,11 @@
+# Keep the existing CPU torch/cv2 installation; install ultralytics separately
+# with --no-deps to avoid replacing Intel-compatible wheels.
+scipy==1.12.0
+matplotlib==3.8.4
+requests==2.32.3
+psutil==6.1.0
+py-cpuinfo==9.0.0
+pandas==2.2.3
+seaborn==0.13.2
+ultralytics-thop==2.0.12
+
